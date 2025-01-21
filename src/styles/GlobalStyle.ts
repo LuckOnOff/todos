@@ -20,6 +20,7 @@ button {
     cursor: pointer;
     font-family: inherit;
     border: none;
+    background: white;
 }
 
 #root {

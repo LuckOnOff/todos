@@ -19,7 +19,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25rem;
+    width: 100%;
     height: 3rem;
     border-bottom: 0.01rem solid gray;
 `;
@@ -34,7 +34,7 @@ const HideTasksListButton = styled.button`
 `;
 
 const InputTaskName = styled.input`
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-style: italic;
     height: 100%;
     width: 100%;

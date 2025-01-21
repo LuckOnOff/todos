@@ -16,4 +16,5 @@ export default Header;
 
 const Title = styled.h1`
     font-size: 2.5rem;
+    margin-bottom: 1rem;
 `;

@@ -84,5 +84,6 @@ const CheckboxLabel = styled.label`
 `;
 
 const TaskText = styled.p`
+    font-size: 1.1rem;
     margin-left: 2.5rem;
 `;

@@ -23,7 +23,7 @@ const Display = () => {
                         dataTasks={dataTasks}
                     />
                 </Main>
-                <Footer />
+                <Footer taskLeft={dataTasks.filter(item => item.isDone !== true).length}/>
             </VisualEffect>
         </>
     )
@@ -32,9 +32,11 @@ const Display = () => {
 export default Display;
 
 const Main = styled.main`
-    
+    width: 100%;
 `;
 
 const VisualEffect = styled.div`
+    width: 100%;
+    max-width: 30rem;
     box-shadow: 0 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.2rem 0.4rem -0.1rem rgba(0, 0, 0, 0.06);
 `;
