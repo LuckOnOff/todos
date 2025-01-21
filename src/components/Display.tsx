@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "./Header.tsx";
 import Footer from "./Footer.tsx";
 import Input from "./Input.tsx";
+import ListTasks from "./ListTasks.tsx";
+import { DataTasksTypes } from "../types/dataTasks.ts";
 
 const Display = () => {
+    const [dataTasks, setDataTasks] = useState<DataTasksTypes[]>([
+        {id: 0, taskText: 'Example1', isDone: false},
+        {id: 1, taskText: 'Example2', isDone: true},
+        {id: 2, taskText: 'Example3', isDone: false}
+    ]);
 
     return (
         <>
@@ -12,6 +19,9 @@ const Display = () => {
             <VisualEffect>
                 <Main>
                     <Input />
+                    <ListTasks 
+                        dataTasks={dataTasks}
+                    />
                 </Main>
                 <Footer />
             </VisualEffect>
