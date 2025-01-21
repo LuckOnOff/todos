@@ -5,6 +5,7 @@ import Footer from "./Footer.tsx";
 import Input from "./Input.tsx";
 import ListTasks from "./ListTasks.tsx";
 import { DataTasksTypes } from "../types/dataTasks.ts";
+import { Filter } from "../types/filter.ts";
 
 const Display = () => {
     const [dataTasks, setDataTasks] = useState<DataTasksTypes[]>([
@@ -14,6 +15,7 @@ const Display = () => {
     ]);
     const [taskText, setTaskText] = useState<string>('');
     const [isShowListTasks, setIsShowListTasks] = useState<boolean>(true);
+    const [filter, setFilter] = useState<Filter>('all');
 
     const handleClickAddTask  = () => {
         if(taskText.length === 0) return;
@@ -48,6 +50,20 @@ const Display = () => {
             prevTasks.filter(item => !item.isDone)
         );
     };
+
+    const getFilteredTodos = (): DataTasksTypes[] => {
+        switch (filter) {
+            case 'active':
+                return dataTasks.filter(item => !item.isDone);
+            case 'completed':
+                return dataTasks.filter(item => item.isDone);
+            case 'all':
+            default:
+                return dataTasks;
+        }
+    };
+
+    const filteredTodos = getFilteredTodos();
     
 
     return (
@@ -64,7 +80,7 @@ const Display = () => {
                     />
                     {isShowListTasks && 
                     <ListTasks 
-                        dataTasks={dataTasks}
+                        dataTasks={filteredTodos}
                         onClickChangeDoneTask={handleChangeIsDoneTask}
                     />
                     }
@@ -72,6 +88,8 @@ const Display = () => {
                 <Footer 
                     taskLeft={dataTasks.filter(item => item.isDone !== true).length}
                     onClickClearCompleteTasks={handleClickClearCompleteTasks}
+                    onClickFilterTasks={(newFilter: Filter) => setFilter(newFilter)}
+                    filter={filter}
                 />
             </VisualEffect>
         </>

@@ -1,19 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import { Filter } from "../types/filter.ts";
 
-const Footer = ({ taskLeft, onClickClearCompleteTasks }: FooterProps) => {
+const Footer = ({ taskLeft, onClickClearCompleteTasks, onClickFilterTasks, filter }: FooterProps) => {
 
     return (
         <StyledFooter>
             <StyledTaskLeft>{taskLeft + ' задач осталось'}</StyledTaskLeft>
             <SortedButtonsContainer>
-                <SortedButtonsItem>
+                <SortedButtonsItem
+                    onClick={() => onClickFilterTasks('all')}
+                    $isActive={filter === 'all'}
+                >
                     Все
                 </SortedButtonsItem>
-                <SortedButtonsItem>
+                <SortedButtonsItem
+                    onClick={() => onClickFilterTasks('active')}
+                    $isActive={filter === 'active'}
+                >
                     Активные
                 </SortedButtonsItem>
-                <SortedButtonsItem>
+                <SortedButtonsItem
+                    onClick={() => onClickFilterTasks('completed')}
+                    $isActive={filter === 'completed'}
+                >
                     Выполненные
                 </SortedButtonsItem>
             </SortedButtonsContainer>
@@ -27,6 +37,8 @@ export default Footer;
 interface FooterProps {
     taskLeft: number;
     onClickClearCompleteTasks: () => void;
+    onClickFilterTasks: (newFilter: Filter) => void;
+    filter: string;
 };
 
 const StyledFooter = styled.footer`
@@ -49,10 +61,16 @@ const SortedButtonsContainer = styled.div`
     margin: 1.5rem 0 2rem 0;
 `;
 
-const SortedButtonsItem = styled.button`
+const SortedButtonsItem = styled.button<{ $isActive: boolean }>`
     font-size: 1.1rem;
+    padding: 0.2rem;
+
+    ${({ $isActive }) => $isActive && `
+        border: 0.1rem solid black;
+    `}
 `;
 
 const ClearButton = styled.button`
     font-size: 1.1rem;
+    padding: 0.2rem;
 `;
