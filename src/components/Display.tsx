@@ -4,7 +4,7 @@ import Header from "./Header.tsx";
 import Footer from "./Footer.tsx";
 import Input from "./Input.tsx";
 import ListTasks from "./ListTasks.tsx";
-import { DataTasksTypes } from "../types/dataTasks.ts";
+import { DataTasksTypes } from "./../types/dataTasks.ts";
 import { Filter } from "../types/filter.ts";
 
 const Display = () => {

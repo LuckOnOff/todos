@@ -9,18 +9,25 @@ const Footer = ({ taskLeft, onClickClearCompleteTasks, onClickFilterTasks, filte
             <StyledTaskLeft>{taskLeft + ' задач осталось'}</StyledTaskLeft>
             <SortedButtonsContainer>
                 <SortedButtonsItem
+                    role="button"
+                    aria-label="Все"
                     onClick={() => onClickFilterTasks('all')}
                     $isActive={filter === 'all'}
                 >
                     Все
                 </SortedButtonsItem>
                 <SortedButtonsItem
+                    role="button"
+                    aria-label="Активные"
                     onClick={() => onClickFilterTasks('active')}
                     $isActive={filter === 'active'}
                 >
                     Активные
                 </SortedButtonsItem>
                 <SortedButtonsItem
+                    role="button"
+                    aria-label="Выполненные"
+                    className="category-completed"
                     onClick={() => onClickFilterTasks('completed')}
                     $isActive={filter === 'completed'}
                 >

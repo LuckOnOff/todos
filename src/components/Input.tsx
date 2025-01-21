@@ -17,7 +17,7 @@ const Input = ({ taskText, onChangeTaskText, onClickAddNewTask, isShowTasks, onC
                     onChange={onChangeTaskText}
                     placeholder="Что должно быть сделано?" 
                 />
-                <AddNewTask onClick={onClickAddNewTask}>
+                <AddNewTask onClick={onClickAddNewTask} role="button" aria-label="Добавить задачу">
                     +
                 </AddNewTask>
             </StyledForm>

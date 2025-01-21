@@ -8,15 +8,17 @@ const Task = ({ idTask, taskText, isDone, onClickChangeDoneTask }: TaskProps) =>
             <HiddenCheckbox
                 type="checkbox"
                 id={idTask}
-                checked={isDone}
+                defaultChecked={isDone}
                 name="isDone"
             />
             <CheckboxLabel
+                role="button"
+                aria-label="Завершить"
                 onClick={() => onClickChangeDoneTask(idTask)}
                 title={'Пометить как ' + (isDone ? 'не выполненную' : 'выполненную')}
                 htmlFor={idTask}
             ></CheckboxLabel>
-            <TaskText $isDone={isDone}>{taskText}</TaskText>
+            <TaskText className={isDone ? 'completed' : ''} $isDone={isDone}>{taskText}</TaskText>
         </ListTasksItem>
     )
 };
