@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const Input = ({ taskText, onChangeTaskText, onClickAddNewTask }: InputProps) => {
+const Input = ({ taskText, onChangeTaskText, onClickAddNewTask, isShowTasks, onClickShowTasks }: InputProps) => {
 
     return (
         <Container>
-            <HideTasksListButton>
-                &lsaquo;
+            <HideTasksListButton onClick={onClickShowTasks}>
+                <HideShowArrow $isShowTasks={isShowTasks}>
+                    &lsaquo;
+                </HideShowArrow>
             </HideTasksListButton>
             <InputTaskName 
                 type="text"
@@ -27,6 +29,8 @@ interface InputProps {
     taskText: string;
     onChangeTaskText: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onClickAddNewTask: () => void;
+    isShowTasks: boolean;
+    onClickShowTasks: () => void;
 };
 
 const Container = styled.div`
@@ -36,15 +40,26 @@ const Container = styled.div`
     width: 100%;
     height: 3.5rem;
     border-bottom: 0.01rem solid gray;
+    position: relative;
+    z-index: 2;
 `;
 
-const HideTasksListButton = styled.button`
-    font-size: 2.2rem;
-    opacity: 0.5;
+const HideTasksListButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
-    width: 4rem;
+    width: 5rem;
     height: 100%;
-    transform: rotate(270deg);
+`;
+
+const HideShowArrow = styled.button<{ $isShowTasks: boolean }>`
+    width: 90%;
+    height: 100%;
+    opacity: 0.5;
+    font-size: 2.2rem;
+    transform: ${({ $isShowTasks }) => $isShowTasks ? 'rotate(270deg)' : 'rotate(90deg)'};
+    transition: transform 0.3s linear;
 `;
 
 const InputTaskName = styled.input`

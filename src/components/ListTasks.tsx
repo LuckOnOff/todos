@@ -55,8 +55,8 @@ const CheckboxLabel = styled.label`
     &::before {
         content: '';
         position: absolute;
-        left: 0.2rem;
-        top: -0.3rem;
+        left: 1rem;
+        top: -0.2rem;
         width: 1.3rem;
         height: 1.3rem;
         border: 0.1rem solid black;
@@ -73,9 +73,9 @@ const CheckboxLabel = styled.label`
     ${HiddenCheckbox}:checked + &::after {
         content: '';
         position: absolute;
-        left: 0.75rem;
-        top: -0.1rem;
-        width: 0.3rem;
+        left: 1.5rem;
+        top: 0rem;
+        width: 0.25rem;
         height: 0.7rem;
         border: solid green;
         border-width: 0 0.16rem 0.19rem 0;
@@ -85,5 +85,5 @@ const CheckboxLabel = styled.label`
 
 const TaskText = styled.p`
     font-size: 1.1rem;
-    margin-left: 2.5rem;
+    margin-left: 3.5rem;
 `;

@@ -13,10 +13,11 @@ const Display = () => {
         {id: 2, taskText: 'Example3', isDone: false}
     ]);
     const [taskText, setTaskText] = useState<string>('');
+    const [isShowTasks, setIsShowTasks] = useState<boolean>(true);
 
     const handleClickAddTask  = () => {
         setTaskText('');
-        
+
         setDataTasks(
             [
               ...dataTasks,
@@ -29,6 +30,10 @@ const Display = () => {
         setTaskText(e.target.value);
     };
 
+    const handleChangeShowTasks = () => {
+        setIsShowTasks(!isShowTasks);
+    };
+
     return (
         <>
             <Header />
@@ -38,11 +43,14 @@ const Display = () => {
                         taskText={taskText}
                         onChangeTaskText={handleChangeTaskText}
                         onClickAddNewTask={handleClickAddTask}
-
+                        isShowTasks={isShowTasks}
+                        onClickShowTasks={handleChangeShowTasks}
                     />
+                    {isShowTasks && 
                     <ListTasks 
                         dataTasks={dataTasks}
                     />
+                    }
                 </Main>
                 <Footer taskLeft={dataTasks.filter(item => item.isDone !== true).length}/>
             </VisualEffect>

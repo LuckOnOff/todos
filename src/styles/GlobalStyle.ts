@@ -29,6 +29,7 @@ button {
     align-items: center;
     width: 100%;
     min-height: 100vh;
+    margin: 1rem 0;
 }
   
 @media (max-width: 768px) {
