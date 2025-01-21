@@ -10,15 +10,17 @@ const Input = ({ taskText, onChangeTaskText, onClickAddNewTask, isShowTasks, onC
                     &lsaquo;
                 </HideShowArrow>
             </HideTasksListButton>
-            <InputTaskName 
-                type="text"
-                value={taskText}
-                onChange={onChangeTaskText}
-                placeholder="Что должно быть сделано?" 
-            />
-            <AddNewTask onClick={onClickAddNewTask}>
-                +
-            </AddNewTask>
+            <StyledForm onSubmit={(e) => e.preventDefault()}>
+                <InputTaskName 
+                    type="text"
+                    value={taskText}
+                    onChange={onChangeTaskText}
+                    placeholder="Что должно быть сделано?" 
+                />
+                <AddNewTask onClick={onClickAddNewTask}>
+                    +
+                </AddNewTask>
+            </StyledForm>
         </Container>
     )
 };
@@ -40,8 +42,6 @@ const Container = styled.div`
     width: 100%;
     height: 3.5rem;
     border-bottom: 0.01rem solid gray;
-    position: relative;
-    z-index: 2;
 `;
 
 const HideTasksListButton = styled.div`
@@ -53,8 +53,16 @@ const HideTasksListButton = styled.div`
     height: 100%;
 `;
 
+const StyledForm = styled.form`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+`;
+
 const HideShowArrow = styled.button<{ $isShowTasks: boolean }>`
-    width: 90%;
+    width: 80%;
     height: 100%;
     opacity: 0.5;
     font-size: 2.2rem;
@@ -69,7 +77,6 @@ const InputTaskName = styled.input`
     width: 100%;
     border: none;
     padding: 0.8rem;
-    z-index: 1;
 `;
 
 const AddNewTask = styled.button`

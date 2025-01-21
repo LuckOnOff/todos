@@ -13,15 +13,16 @@ const Display = () => {
         {id: 2, taskText: 'Example3', isDone: false}
     ]);
     const [taskText, setTaskText] = useState<string>('');
-    const [isShowTasks, setIsShowTasks] = useState<boolean>(true);
+    const [isShowListTasks, setIsShowListTasks] = useState<boolean>(true);
 
     const handleClickAddTask  = () => {
-        setTaskText('');
+        if(taskText.length === 0) return;
 
+        setTaskText('');
         setDataTasks(
             [
               ...dataTasks,
-              {'id': Date.now(), 'taskText': taskText, isDone: false}
+              {id: dataTasks.length + 1, taskText: taskText, isDone: false}
             ]
           );
     };
@@ -31,8 +32,17 @@ const Display = () => {
     };
 
     const handleChangeShowTasks = () => {
-        setIsShowTasks(!isShowTasks);
+        setIsShowListTasks(!isShowListTasks);
     };
+
+    const handleChangeIsDoneTask = (id: string) => {
+        setDataTasks(prevTasks =>
+            prevTasks.map(task =>
+                task.id === +id ? { ...task, isDone: !task.isDone } : task
+            )
+        );
+    };
+    
 
     return (
         <>
@@ -43,12 +53,13 @@ const Display = () => {
                         taskText={taskText}
                         onChangeTaskText={handleChangeTaskText}
                         onClickAddNewTask={handleClickAddTask}
-                        isShowTasks={isShowTasks}
+                        isShowTasks={isShowListTasks}
                         onClickShowTasks={handleChangeShowTasks}
                     />
-                    {isShowTasks && 
+                    {isShowListTasks && 
                     <ListTasks 
                         dataTasks={dataTasks}
+                        onClickChangeDoneTask={handleChangeIsDoneTask}
                     />
                     }
                 </Main>

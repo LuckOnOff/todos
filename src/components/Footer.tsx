@@ -29,7 +29,7 @@ const StyledFooter = styled.footer`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0.5rem;
+    margin: 1rem;
 `;
 
 const StyledTaskLeft = styled.span`
