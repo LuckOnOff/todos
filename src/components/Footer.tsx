@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Footer = ({ taskLeft }) => {
+const Footer = ({ taskLeft, onClickClearCompleteTasks }: FooterProps) => {
 
     return (
         <StyledFooter>
-            <StyledTaskLeft>{taskLeft + ' задачи осталось'}</StyledTaskLeft>
+            <StyledTaskLeft>{taskLeft + ' задач осталось'}</StyledTaskLeft>
             <SortedButtonsContainer>
                 <SortedButtonsItem>
                     Все
@@ -17,12 +17,17 @@ const Footer = ({ taskLeft }) => {
                     Выполненные
                 </SortedButtonsItem>
             </SortedButtonsContainer>
-            <ClearButton>Очистить выполненные</ClearButton>
+            <ClearButton onClick={onClickClearCompleteTasks}>Очистить выполненные</ClearButton>
         </StyledFooter>
     )
 };
 
 export default Footer;
+
+interface FooterProps {
+    taskLeft: number;
+    onClickClearCompleteTasks: () => void;
+};
 
 const StyledFooter = styled.footer`
     display: flex;

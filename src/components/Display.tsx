@@ -42,6 +42,12 @@ const Display = () => {
             )
         );
     };
+
+    const handleClickClearCompleteTasks = () => {
+        setDataTasks(prevTasks =>
+            prevTasks.filter(item => !item.isDone)
+        );
+    };
     
 
     return (
@@ -63,7 +69,10 @@ const Display = () => {
                     />
                     }
                 </Main>
-                <Footer taskLeft={dataTasks.filter(item => item.isDone !== true).length}/>
+                <Footer 
+                    taskLeft={dataTasks.filter(item => item.isDone !== true).length}
+                    onClickClearCompleteTasks={handleClickClearCompleteTasks}
+                />
             </VisualEffect>
         </>
     )
