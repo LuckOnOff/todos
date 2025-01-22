@@ -86,7 +86,7 @@ const Display = () => {
                     }
                 </Main>
                 <Footer 
-                    taskLeft={dataTasks.filter(item => item.isDone !== true).length}
+                    taskLeft={filteredTodos.length}
                     onClickClearCompleteTasks={handleClickClearCompleteTasks}
                     onClickFilterTasks={(newFilter: Filter) => setFilter(newFilter)}
                     filter={filter}
